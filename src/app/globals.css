@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900;
+  }
+}
+
+/* Custom portfolio styles */
+.case-study-hero {
+  @apply relative overflow-hidden;
+}
+
+.case-study-hero::before {
+  content: '';
+  @apply absolute inset-0 bg-black bg-opacity-20 transition-all duration-300;
+}
+
+.case-study-hero:hover::before {
+  @apply bg-opacity-10;
+}
+
+/* ASCII diagram styling */
+.ascii-diagram {
+  @apply font-mono text-sm text-gray-800 bg-gray-50 p-4 rounded-lg overflow-x-auto whitespace-pre-wrap;
+}
+
+/* Impact metrics styling */
+.impact-metric {
+  @apply bg-white border border-gray-200 px-6 py-4 rounded-lg flex items-center justify-between;
+}
+
+.impact-value {
+  @apply text-2xl font-bold text-blue-600;
+}
+
+/* Testimonial styling */
+.testimonial {
+  @apply bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500;
+}
+
+/* Problem breakdown styling */
+.problem-breakdown {
+  @apply bg-gray-50 p-6 rounded-lg;
+}
+
+.problem-breakdown pre {
+  @apply text-sm text-gray-800 overflow-x-auto whitespace-pre-wrap font-mono;
+} 
