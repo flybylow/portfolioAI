@@ -4,6 +4,7 @@ export interface CaseStudy {
   subtitle: string;
   year: string;
   client: string;
+  logo?: string;
   role: string;
   duration: string;
   team: string[];
@@ -36,6 +37,7 @@ export const caseStudies: CaseStudy[] = [
     subtitle: 'Redesigning OEE platform for human-machine collaboration',
     year: '2023',
     client: 'Electrolux Group',
+    logo: '/logos/electrolux.svg',
     role: 'Design Director / UX Lead',
     duration: '8 months',
     team: ['Product Managers', 'Data Scientists', 'Engineers', 'Operators'],

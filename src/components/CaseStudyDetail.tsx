@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowLeft } from 'lucide-react';
+import Image from 'next/image';
 import { CaseStudy } from '@/data/case-studies';
 import { Button } from '@/components/ui/button';
 import { Footer } from './Footer';
@@ -82,11 +83,17 @@ export const CaseStudyDetail = ({ caseStudy, onBack }: CaseStudyDetailProps) => 
           <div className="mt-12">
             <h3 className="text-xl font-bold mb-6">Business Context</h3>
             <div className="flex items-start gap-4">
-              {/* Company/Client Logo Space */}
+              {/* Company/Client Logo */}
               <div className="flex-shrink-0">
-                <div className="w-20 h-20 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-400 text-xs text-center">Client Logo</span>
-                </div>
+                {caseStudy.logo ? (
+                  <div className="w-20 h-20 rounded-lg bg-white border border-gray-200 flex items-center justify-center">
+                    <Image src={caseStudy.logo} alt={`${caseStudy.client} logo`} width={80} height={80} className="object-contain" />
+                  </div>
+                ) : (
+                  <div className="w-20 h-20 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
+                    <span className="text-gray-400 text-xs text-center">Client Logo</span>
+                  </div>
+                )}
               </div>
               {/* Business Context Text */}
               <div className="flex-1">
