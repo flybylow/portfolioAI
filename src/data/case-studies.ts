@@ -1,3 +1,12 @@
+export type MediaItem = {
+  src: string;
+  alt: string;
+  caption?: string;
+  span?: 1 | 2 | 3;
+  width?: number;
+  height?: number;
+}
+
 export interface CaseStudy {
   id: string;
   title: string;
@@ -14,7 +23,10 @@ export interface CaseStudy {
   solution: string;
   impact: string[];
   businessContext?: string;
+  businessContextImages?: MediaItem[];
   problemBreakdown?: string;
+  problemImages?: MediaItem[];
+  researchImages?: MediaItem[];
   researchMethods?: string[];
   keyInsight?: string;
   solutions?: {
@@ -22,12 +34,15 @@ export interface CaseStudy {
     problem: string;
     solution: string;
     diagram?: string;
+    media?: MediaItem[];
   }[];
   implementationResults?: string;
   testimonials?: string[];
   technologyStack?: string;
   designPrinciples?: string[];
   keyTakeaway?: string;
+  media?: MediaItem[];
+  gallery?: MediaItem[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -35,9 +50,9 @@ export const caseStudies: CaseStudy[] = [
     id: 'electrolux-ai',
     title: 'Electrolux Manufacturing Platform',
     subtitle: 'Redesigning OEE platform for human-machine collaboration',
-    year: '2023',
+    year: '2024',
     client: 'Electrolux Group',
-    logo: '/logos/electrolux.svg',
+    logo: '/logos/electroluxLogo.png',
     role: 'Design Director / UX Lead',
     duration: '8 months',
     team: ['Product Managers', 'Data Scientists', 'Engineers', 'Operators'],
@@ -51,11 +66,37 @@ export const caseStudies: CaseStudy[] = [
       '4.2/5.0 user satisfaction',
       '60% faster issue resolution'
     ],
+    problemImages: [],
+    media: [
+      {
+        src: '/logos/electroluxLogo.png',
+        alt: 'Electrolux logo placeholder',
+        caption: 'Production dashboard redesign: priority surfacing and operator validation.',
+        span: 2,
+        width: 1600,
+        height: 900
+      },
+      {
+        src: '/logos/electroluxLogo.png',
+        alt: 'Electrolux logo placeholder',
+        caption: 'AI-human collaboration workflow.',
+        span: 1,
+        width: 1000,
+        height: 1000
+      },
+      {
+        src: '/logos/electroluxLogo.png',
+        alt: 'Electrolux logo placeholder',
+        caption: 'Real-time machine analytics interface.',
+        span: 3,
+        width: 2100,
+        height: 900
+      }
+    ],
     businessContext: 'Electrolux Group (50,000+ employees, 120 countries) embarked on comprehensive digital transformation to move from gut-driven decisions to data-driven manufacturing excellence.',
     problemBreakdown: `🏭 ELECTROLUX MANUFACTURING LANDSCAPE
 ├── 30+ Production Sites Worldwide
-├── 90% Unique Machines (Pièces Uniques)
-├── 800°C Industrial Furnaces (Gas-Powered)
+├── 90% Unique Machines 
 └── Multiple Product Lines: AEG, Zanussi, etc.
 
 ❌ CRITICAL PROBLEMS
@@ -63,14 +104,6 @@ export const caseStudies: CaseStudy[] = [
 │   ├── Multiple dashboard screens
 │   ├── Complex status indicators
 │   └── Overwhelming data streams
-├── 🤖 AI-Human Disconnect
-│   ├── AI defect detection needs validation
-│   ├── Operators can't see machine behavior
-│   └── No feedback loop for AI improvement
-├── ⚡ Energy Inefficiency
-│   ├── Fixed furnace start-up schedules
-│   ├── Major CO2 emissions contributor
-│   └── High gas consumption costs
 └── 📈 Low Adoption Rates
     ├── Complex interfaces
     ├── Inadequate training
@@ -80,12 +113,47 @@ export const caseStudies: CaseStudy[] = [
       'Stakeholder interviews (Production Supervisors, Quality Managers, Engineering Teams)',
       'Journey mapping sessions and pain point prioritization'
     ],
-    keyInsight: '"We know our machines better than anyone, but we can\'t see what they\'re actually doing" - Production Operator',
+    researchImages: [
+      {
+        src: '/case-studie/electrolux/elex-highlevel.png',
+        alt: 'High-level OEE redesign overview',
+        caption: 'Research synthesis and high-level UX direction for OEE platform.',
+        width: 2048,
+        height: 1152
+      }
+    ],
+    keyInsight: '"We know our machines better than anyone, but we can\'t always see what they\'re  doing" - Production Operator',
     solutions: [
       {
         title: 'Intelligent Priority Dashboard',
         problem: 'Information overload from multiple systems',
-        solution: 'AI-powered interface that automatically surfaces highest-priority issues',
+        solution: 'Clean dashboard that automatically surfaces highest-priority issues',
+        media: [
+          {
+            src: '/case-studie/electrolux/electrolux-before.png',
+            alt: 'Electrolux legacy materials grid UI screenshot',
+            caption: 'Before: dense materials grid causing information overload and high cognitive load.',
+            span: 2,
+            width: 1920,
+            height: 931
+          },
+          {
+            src: '/case-studie/electrolux-after.png',
+            alt: 'Electrolux redesigned dashboard in use at the office',
+            caption: 'After: Data visualisation and oversight.',
+            span: 3,
+            width: 1512,
+            height: 735
+          },
+          {
+            src: '/case-studie/electrolux/STATION-DASHBOARD.png',
+            alt: 'Station dashboard overview with OEE KPIs',
+            caption: 'Station dashboard: clear KPI hierarchy, quantity gap, and status timeline.',
+            span: 3,
+            width: 2048,
+            height: 1152
+          },
+        ],
         diagram: `BEFORE: Multiple Overwhelming Screens
 ┌─────────┬─────────┬─────────┬─────────┐
 │Screen 1 │Screen 2 │Screen 3 │Screen 4 │
@@ -97,16 +165,26 @@ export const caseStudies: CaseStudy[] = [
 
 AFTER: Unified Priority Interface
 ┌─────────────────────────────────────┐
-│  🔴 CRITICAL: Furnace Temp Alert    │
-│  ⚠️  HIGH: Quality Check Required   │
-│  🟡 MEDIUM: Maintenance Due Soon    │
-│  ✅ NORMAL: All Systems Operating   │
+│  🔴 CRITICAL: Furnace Temp Alert    
+│  ⚠️  HIGH: Quality Check Required   
+│  🟡 MEDIUM: Maintenance Due Soon    
+│  ✅ NORMAL: All Systems Operating   
 └─────────────────────────────────────┘`
       },
       {
-        title: 'Human-AI Collaboration Flow',
-        problem: 'AI defect detection needed human validation',
-        solution: 'Seamless feedback system for continuous AI improvement',
+        title: 'Defect Detection System for Production',
+        problem: 'Defect detection needed human validation',
+        solution: 'Seamless feedback system for continuous improvement',
+        media: [
+          {
+            src: '/case-studie/electrolux/Downtime justification.png',
+            alt: 'Downtime justification interface',
+            caption: 'Operator workflow for downtime classification and justification.',
+            span: 3,
+            width: 2048,
+            height: 1152
+          }
+        ],
         diagram: `AI DEFECT DETECTION WORKFLOW
 ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
 │   CAMERA    │───▶│  AI MODEL   │───▶│  OPERATOR   │
@@ -115,88 +193,90 @@ AFTER: Unified Priority Interface
        ▲                  │                   │
        │                  ▼                   ▼
 ┌─────────────────────────────────────────────────────┐
-│           CONTINUOUS LEARNING LOOP                  │
-│  AI Confidence: 92% ✓ Operator Confirms: ✓        │
-│  Pattern Learned: Similar defects auto-approved    │
+│           CONTINUOUS LEARNING LOOP                
+│  Pattern Learned: Similar defects auto-approved    
 └─────────────────────────────────────────────────────┘`
       },
       {
         title: 'Real-Time Machine Analytics',
         problem: 'Hidden machine behavior affecting quality and energy',
-        solution: 'Live visibility into critical machine parameters',
-        diagram: `🔥 FURNACE CONTROL INTERFACE
-┌─────────────────────────────────────────────────────┐
-│ Furnace #3 - Panel Production Line                  │
-├─────────────────────────────────────────────────────┤
-│ Current Temp: 785°C     Target: 800°C              │
-│ Start Time: 14:23       Optimal: 14:18 ✅          │
-│ Energy Saved: 12.3kWh   CO2 Reduced: 8.2kg        │
-│                                                     │
-│ NEXT CYCLE PREDICTION                              │
-│ ┌─────────────────────────────────────────────┐    │
-│ │    ⚡ Start in 47 minutes                   │    │
-│ │    📊 Based on production pace + temp curve │    │
-│ │    💰 Est. savings: €23.50                  │    │
-│ └─────────────────────────────────────────────┘    │
-└─────────────────────────────────────────────────────┘`
+        solution: 'Live visibility into defects and critical machine parameter through PowerBI dashboards. Redesigned dashboard to stream real-time data to andon screens (monitors inside the factory).  ',
+        media: [
+          {
+            src: '/case-studie/electrolux/DASHBOARD.png',
+            alt: 'Responsive real-time dashboard for andon screens',
+            caption: 'The interface was made responsive to stream real-time data to andon screens (monitors inside the factory).',
+            span: 3,
+            width: 2048,
+            height: 1152
+          },
+          {
+            src: '/case-studie/electrolux/DASHBOARD-Month.png',
+            alt: 'Monthly shift calendar view',
+            caption: 'Month view to plan and review shifts with aggregated production context was needed to give better visibility and planning context to the operators.',
+            span: 3,
+            width: 2048,
+            height: 1152
+          }
+        ],
+        diagram: `🔥 ANDON SCREENS`
+      }
+    ],
+    gallery: [
+      {
+        src: '/case-studie/electrolux/detail.png',
+        alt: 'Electrolux KPI tiles and OEE detail',
+        caption: 'Design exploration of KPI tiles, OEE gauge, and exception indicators.',
+        width: 2400,
+        height: 1200
+      },
+      {
+        src: '/case-studie/electrolux/colorsDS.png',
+        alt: 'Typography and color accessibility combinations',
+        caption: 'Design system: secondary color palette and WCAG AA/AAA combinations guidance.',
+        width: 2048,
+        height: 1152
+      },
+      {
+        src: '/case-studie/electrolux/day2.png',
+        alt: 'Shift overview timeline with events and tooltip',
+        caption: 'First iteration of the timeline component with annotated events and tooltips for operator context.',
+        width: 1600,
+        height: 414
       }
     ],
     implementationResults: `📊 PERFORMANCE METRICS (12 MONTHS POST-LAUNCH)
 
-USER ADOPTION
-┌─────────────────────────────────────┐
-│ 👥 Daily Active Users              │
-│ ▓▓▓▓▓▓▓▓▓░ 89% of operators        │
-│                                     │
-│ 📚 Training Time                   │
-│ ▓▓▓░░░░░░░ -75% vs previous system │
-│                                     │
-│ 😊 Satisfaction Score              │
-│ ▓▓▓▓▓▓▓▓░░ 4.2/5.0 user rating    │
-└─────────────────────────────────────┘
 
 OPERATIONAL EXCELLENCE
 ┌─────────────────────────────────────┐
-│ 🎯 Quality Improvements             │
-│ ▓▓▓▓▓▓▓▓░░ +15% defect detection   │
-│                                     │
-│ ⚡ Response Time                    │
-│ ▓▓▓▓▓▓▓▓▓░ -60% issue resolution   │
-│                                     │
-│ 📈 OEE Score                       │
-│ ▓▓▓▓▓▓▓▓▓▓ +12% overall efficiency │
+│ 🎯 Quality Improvements             
+│ ▓▓▓▓▓▓▓▓░░ +15% defect detection   
+     
+│ 📈 OEE Score                       
+│ ▓▓▓▓▓▓▓▓▓▓ +12% overall efficiency 
+│  
+│ 😊 Satisfaction Score              
+│ ▓▓▓▓▓▓▓▓░░ 4.2/5.0 user rating    
 └─────────────────────────────────────────────────────┘`,
     testimonials: [
-      '"Finally someone shows us that we did a good job" - Mark, Production Operator',
-      '"The AI actually learns from us - it feels like we\'re working together, not being replaced" - Johan, Line Supervisor'
+      '"Finally someone shows us that we did a good job" - Mark, Production Operator'
     ],
     technologyStack: `🚀 TECHNOLOGY STACK
 
-ARTIFICIAL INTELLIGENCE
-┌─────────────────────────────────────┐
-│ 👁️  Computer Vision                │
-│ ├── Defect detection algorithms    │
-│ ├── Quality inspection automation  │
-│ └── Pattern recognition systems    │
-│                                     │
-│ 🧠 Machine Learning                │
-│ ├── Predictive maintenance models  │
-│ ├── Energy optimization algorithms │
-│ └── Production forecasting         │
-└─────────────────────────────────────┘
 
 DEVELOPMENT STACK  
 ├── ☁️ Microsoft Azure: Cloud infrastructure
-├── 🤖 Robovision: AI computer vision
+├── 🤖 Computer vision
 ├── 📊 Power BI: Analytics dashboards  
 └── 🔗 IoT Hub: Device connectivity`,
     designPrinciples: [
-      'Transparency First: Show AI confidence levels and reasoning',
+      'Transparency First: Show confidence levels and reasoning',
       'Amplify Human Expertise: Enhance, don\'t replace human judgment',
       'Contextual Intelligence: Right information at the right time',
       'Continuous Learning: Natural feedback loops for both humans and AI'
     ],
-    keyTakeaway: 'This project demonstrates how strategic UX design can successfully bridge advanced AI technologies with human operators, creating a sustainable model for Industry 5.0 manufacturing that prioritizes both operational excellence and human wellbeing.'
+    keyTakeaway: 'This project demonstrates how strategic UX design can successfully bridge advanced technologies with human operators, creating a sustainable model for Industry 5.0 manufacturing that prioritizes both operational excellence and human wellbeing.'
   },
   {
     id: 'arcelormittal-steel',
@@ -204,6 +284,7 @@ DEVELOPMENT STACK
     subtitle: 'Redesigning enterprise platform for steel industry',
     year: '2017-2020',
     client: 'ArcelorMittal (via Capgemini)',
+    logo: '/logos/Arcelormittal-logo.svg',
     role: 'UX Designer',
     duration: '3 years',
     team: ['Ben (Senior UX Designer)', 'Dev Teams', 'Steel Industry Experts'],
@@ -212,12 +293,22 @@ DEVELOPMENT STACK
     challenge: 'World\'s largest steel producer had fragmented systems across sales, planning, production, and shipping, with email/phone coordination causing delays and inefficiencies.',
     solution: 'Created unified ScaleUp platform integrating all departments with real-time communication, centralized data management, and streamlined workflows.',
     impact: [
-      '62% faster order processing',
-      '85% better cross-department communication', 
-      '92% reduction in information search time',
-      '88% user satisfaction rate'
+      'Faster order processing',
+      'Better cross-department communication', 
+      'Reduction in information search time',
+      'Higher user satisfaction rate'
     ],
     businessContext: 'Complete steel supply chain software overhaul for ArcelorMittal Belgium over 3 years, transforming fragmented departmental systems into unified platform.',
+    businessContextImages: [
+      {
+        src: '/case-studie/arcelor/steel.png',
+        alt: 'Steel coils in ArcelorMittal warehouse',
+        caption: 'Steel production context for the ScaleUp platform',
+        span: 3,
+        width: 1321,
+        height: 768
+      }
+    ],
     problemBreakdown: `📧 EMAIL OVERLOAD          🔀 SYSTEM FRAGMENTATION        📊 DATA CHAOS
 ├─ Lost decisions          ├─ Sales software              ├─ Complex databases
 ├─ No tracking            ├─ Planning software           ├─ Giant spreadsheets  
@@ -244,28 +335,60 @@ BEFORE: Fragmented Chaos
         problem: 'Five disconnected systems with manual handoffs',
         solution: 'Single integrated platform with shared data and communication',
         diagram: `AFTER: Unified ScaleUp Platform
-┌─────────────────────────────────────────────────────────────────┐
-│                    🚀 SCALEUP PLATFORM                          │
-├─────────────┬─────────────┬─────────────┬─────────────────────────┤
-│   📊 SALES  │ 📅 PLANNING │ 🏭 PRODUCTION│  🚛 SHIPPING & QUALITY │
-│             │             │              │                        │
-│ • Orders    │ • Schedules │ • Real-time  │ • Logistics           │
-│ • Specs     │ • Resources │ • Monitoring │ • Quality Control     │
-│ • Progress  │ • Capacity  │ • Alerts     │ • Delivery Tracking   │
-└─────────────┴─────────────┴─────────────┴─────────────────────────┘
+┌────────────────────────────────────────────────────────────────────
+│                    🚀 SCALEUP PLATFORM                          
+├─────────────┬─────────────┬──────────────┬─────────────────────────┤
+│ 📊 SALES      📅 PLANNING   🏭 PRODUCTION   🚛 SHIPPING & QUALITY 
+│             │             │              │                        
+│ • Orders    │ • Schedules │ • Real-time  │ • Logistics           
+│ • Specs     │ • Resources │ • Monitoring │ • Quality Control     
+│ • Progress  │ • Capacity  │ • Alerts     │ • Delivery Tracking   
+└─────────────┴─────────────┴──────────────┴─────────────────────────┘
                                ↕️
-                    💬 INTEGRATED COMMUNICATION`
+                    💬 INTEGRATED COMMUNICATION`,
+        media: [
+          {
+            src: '/case-studie/arcelor/pageflow.png',
+            alt: 'Application architecture and key pageflows',
+            caption: 'Application architecture: key pageflows across modules',
+            span: 3
+          },
+          {
+            src: '/case-studie/arcelor/pages.png',
+            alt: 'Wireframes modules and page structure',
+            caption: 'Wireframes: modules and page structure for ScaleUp',
+            span: 3
+          }
+        ]
       },
       {
         title: 'Progressive Information Disclosure',
         problem: 'Information overload and complex data structures',
         solution: 'Hierarchical information architecture with contextual details',
+        media: [
+          {
+            src: '/case-studie/arcelor/flowdetail.png',
+            alt: 'Flow orders detail with progressive disclosure',
+            caption: 'Progressive information disclosure: from high-level to detailed flow alignment and status. Here a single view that informs planning, production and shipping. Before the redesign, each department had their own view and they were not aware of each other\'s work.',
+            span: 3,
+            width: 1536,
+            height: 900
+          },
+          {
+            src: '/case-studie/arcelor/floworderslist.png',
+            alt: 'Flow orders list with inline timelines',
+            caption: 'Overview list: compact inline timelines summarize order progress for fast scanning.',
+            span: 3,
+            width: 1272,
+            height: 517
+          }
+        ],
         diagram: `📊 DASHBOARD LEVEL 1: At-a-Glance
 ┌─────────────────────────────────────────┐
-│  🎯 Today's Priority Orders             │
-│  ⚡ Urgent Quality Issues               │  
-│  🚛 Ready for Shipment                 │
-│  📈 Production Efficiency: 94%         │
+│  🎯 Today's Priority Orders             
+│  ⚡ Urgent Quality Issues                
+│  🚛 Ready for Shipment                 
+│  📈 Production Efficiency: 94%         
 └─────────────────────────────────────────┘
                     ↓ CLICK TO EXPAND
                     
@@ -284,16 +407,42 @@ BEFORE: Fragmented Chaos
         solution: 'In-app chat with order context and shareable views',
         diagram: `💬 IN-APP CHAT SYSTEM
 ┌─────────────────────────────────────────────────────────────┐
-│ 🎯 Order #AM-2024-1847 Discussion                          │
+│ 🎯 Order #AM-2024-1847 Discussion                          
 ├─────────────────────────────────────────────────────────────┤
-│ 👤 Miguel (Planning): "Updated delivery date to March 20"  │
-│ 👤 Dr. Chen (Quality): "Steel composition approved ✅"     │  
-│ 👤 Lisa (Transport): "Truck scheduled for March 19"       │
-│ 👤 Sarah (Production): "Batch ready for quality check"    │
+│ 👤 Miguel (Planning): "Updated delivery date to March 20"  
+│ 👤 Dr. Chen (Quality): "Steel composition approved ✅"       
+│ 👤 Lisa (Transport): "Truck scheduled for March 19"       
+│ 👤 Sarah (Production): "Batch ready for quality check"    
 ├─────────────────────────────────────────────────────────────┤
-│ 🔗 Shared Views: [Production Dashboard] [Quality Report]   │
-│ 📎 Attachments: [Steel_Spec_v2.pdf] [Transport_Route.map] │
-└─────────────────────────────────────────────────────────────┘`
+│ 🔗 Shared Views: [Production Dashboard] [Quality Report]   
+│ 📎 Attachments: [Steel_Spec_v2.pdf] [Transport_Route.map] 
+└─────────────────────────────────────────────────────────────┘`,
+        media: [
+          {
+            src: '/case-studie/arcelor/chat.png',
+            alt: 'In-app messages, alerts, and warnings popover',
+            caption: 'Integrated communication: messages, alerts, and warnings in context'
+          }
+        ]
+      },
+      {
+        title: 'Design System',
+        problem: 'Inconsistent UI across modules reduced usability and slowed delivery',
+        solution: 'Introduced a tailored design system and iconography aligned with industrial brand',
+        media: [
+          {
+            src: '/case-studie/arcelor/icons.png',
+            alt: 'Transportation and logistics icon set for the platform',
+            caption: 'Custom iconography in line with the platform look & feel',
+            span: 2
+          },
+          {
+            src: '/case-studie/arcelor/ds.png',
+            alt: 'Design system components (buttons, states, themes)',
+            caption: 'Components and states across light/dark themes',
+            span: 2
+          }
+        ]
       }
     ],
     implementationResults: `📊 OPERATIONAL METRICS
@@ -305,29 +454,24 @@ Faster coordination         Reduced search time        Quicker approvals
 Cross-Department Visibility  User Satisfaction         Error Reduction  
 ██████████ 95%              ██████████ 88%           ██████████ 67%
 Complete transparency       High adoption rate         Fewer mistakes
-
-TIME TO COMPLETE STANDARD ORDER PROCESS
-BEFORE ScaleUp:  ████████████████████ 8.5 hours
-AFTER ScaleUp:   ██████████ 3.2 hours
-
-Time Savings: 5.3 hours per order (62% reduction)`,
+`,
     testimonials: [
       'We went from email chaos to having all our conversations in context with the actual work - it\'s revolutionary for how we coordinate across departments.',
-      'Finally we can see what\'s happening in production without having to walk the floor or make phone calls - the transparency is incredible.'
+      'Finally we can see what\'s happening in production without having to walk the floor.'
     ],
     technologyStack: `🚀 TECHNOLOGY STACK
 
 PLATFORM ARCHITECTURE
 ┌─────────────────────────────────────┐
-│ 💻 Frontend: Angular SPA           │
-│ ├── Responsive design              │
-│ ├── Component library              │
-│ └── Progressive web app            │
-│                                     │
-│ 🔧 Backend: .NET Core              │
-│ ├── RESTful APIs                   │
-│ ├── Real-time SignalR              │
-│ └── Microservices architecture     │
+│ 💻 Frontend: Angular            
+│ ├── Responsive design              
+│ ├── Component library              
+│ └── Progressive web app            
+│                                     
+│ 🔧 Backend: .NET Core              
+│ ├── RESTful APIs                   
+│ ├── Real-time SignalR              
+│ └── Microservices architecture     
 └─────────────────────────────────────┘
 
 DEVELOPMENT STACK  
@@ -337,75 +481,83 @@ DEVELOPMENT STACK
 └── 🔗 Collaboration: Agile, co-creation`,
     designPrinciples: [
       'User Research First: Always start with understanding real user workflows',
-      'Progressive Disclosure: Show information hierarchically based on user needs',
       'Cross-Functional Transparency: Enable visibility across departmental silos',
       'Contextual Communication: Embed discussions within work context'
     ],
-    keyTakeaway: 'This transformation demonstrates that great UX design has no industry boundaries—every system where humans interact with complex data deserves thoughtful, user-centered design. By placing user needs at the center, we fundamentally changed how hundreds of steel industry professionals collaborate daily.'
+    keyTakeaway: 'By placing user needs at the center, we fundamentally changed how hundreds of steel industry professionals collaborate daily.'
   },
   {
     id: 'bisq-dex',
     title: 'Bisq Decentralized Exchange',
-    subtitle: 'Humanizing crypto trading interfaces',
+    subtitle: 'Crypto trading interfaces',
     year: '2022',
     client: 'Bisq.network (DAO)',
+    logo: '/logos/bisqlogo.png',
     role: 'Senior UX/UI Designer',
-    duration: '3 months',
+    duration: '1 week sprint',
     team: ['Product Owner', 'Data Scientist', 'DAO Community'],
     tags: ['Web3', 'Blockchain', 'P2P Trading'],
     heroImage: 'bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900',
-    challenge: 'Dense orderbook interface with overwhelming data presentation prevented new users from completing first trades, limiting platform growth potential.',
-    solution: 'Redesigned orderbook with clear visual hierarchy, progressive disclosure, and trust-building mechanisms for P2P trading.',
+    challenge: 'Dense orderbook interface with overwhelming data presentation prevented new users from completing first trades.',
+    solution: 'Working closely with a product owner and a data scientist, I redesigned the orderbook with clear visual hierarchy and trust-building mechanisms, and prototyped how a new multi-currency version could work.',
     impact: [
       'Improved orderbook scanability',
       'Reduced first-trade friction',
       'Enhanced multi-currency support',
       'Stronger trust indicators'
     ],
-    businessContext: 'Bisq is a decentralized Bitcoin exchange that enables peer-to-peer trading without intermediaries, requiring intuitive interfaces for both new and experienced crypto traders.',
-    problemBreakdown: `📊 ORDERBOOK COMPLEXITY        🔐 TRUST BARRIERS           🚫 USER FRICTION
-├─ Overwhelming data      ├─ P2P trading risks         ├─ Complex first-time UX
-├─ Poor visual hierarchy  ├─ Reputation system         ├─ Hidden trading options
-├─ Hidden trading pairs   ├─ Escrow mechanisms         ├─ No progressive disclosure
-└─ No progressive flow    ├─ Community validation      └─ Steep learning curve
+    businessContext: 'Bisq DEX is an open-source desktop application that allows you to buy and sell bitcoin. The DAO planned to add multiple currencies to the platform.',
+    problemBreakdown: `📊 ORDERBOOK COMPLEXITY               🚫 USER FRICTION
+├─ Overwhelming data               ├─ Complex first-time UX
+├─ Poor visual hierarchy           ├─ Hidden trading options
+├─ Hidden trading pairs            ├─ No progressive disclosure
+└─ No progressive flow             └─ Steep learning curve
 
 BEFORE: Dense Interface
 ┌─────────────────────────────────────────────────────────────────┐
-│ BTC/USD Orderbook - All Data Visible                           │
-│ Price │ Amount │ Total │ Time │ Reputation │ Location │ Status │
-│ 45.2k │ 0.5   │ 22.6k │ 2min │ ⭐⭐⭐⭐⭐   │ 🇺🇸      │ Active │
-│ 45.1k │ 1.2   │ 54.1k │ 5min │ ⭐⭐⭐⭐    │ 🇪🇺      │ Active │
-│ 45.0k │ 0.8   │ 36.0k │ 8min │ ⭐⭐⭐⭐⭐   │ 🇨🇦      │ Active │
+│ BTC/USD Orderbook - All Data Visible                           
+│ Price │ Amount │ Total │ Time │ Reputation │ Location │ Status 
+│ 45.2k │ 0.5   │ 22.6k │ 2min │ ⭐⭐⭐⭐⭐   │ 🇺🇸      │ Active 
+│ 45.1k │ 1.2   │ 54.1k │ 5min │ ⭐⭐⭐⭐    │ 🇪🇺      │ Active 
+│ 45.0k │ 0.8   │ 36.0k │ 8min │ ⭐⭐⭐⭐⭐   │ 🇨🇦      │ Active 
 └─────────────────────────────────────────────────────────────────┘`,
     researchMethods: [
-      'User testing with crypto newcomers and experienced traders',
-      'Community feedback analysis from Bisq forums and Discord',
+      'Design thinking workshop with PO',
+      'Community feedback',
       'Competitive analysis of centralized and DEX platforms'
     ],
-    keyInsight: 'New users needed progressive disclosure of complexity while experienced traders wanted quick access to advanced features - the interface had to serve both audiences simultaneously.',
+    keyInsight: 'New users needed simplicity, while experienced traders wanted quick access to advanced features. The interface had to serve both audiences simultaneously.',
     solutions: [
       {
-        title: 'Progressive Orderbook Disclosure',
+        title: 'Minimalist Orderbook',
         problem: 'Information overload from dense data presentation',
         solution: 'Layered interface showing essential info first, details on demand',
         diagram: `LEVEL 1: Essential Trading Info
 ┌─────────────────────────────────────────┐
-│ 🎯 BTC/USD - Simple View               │
-│                                         │
-│ 💰 Best Price: $45,200                 │
-│ 📊 Available: 0.5 BTC                  │
-│ ⭐ Trust: Excellent (5/5)              │
-│ 🚀 Quick Trade Button                  │
+│ 🎯 BTC/USD - Simple View               
+│                                         
+│ 💰 Best Price: $45,200                 
+│ 📊 Available: 0.5 BTC                  
+│ ⭐ Trust: Excellent (5/5)              
+│ 🚀 Quick Trade Button                  
 └─────────────────────────────────────────┘
                     ↓ EXPAND FOR DETAILS
                     
 LEVEL 2: Advanced Trading Details
 ┌─────────────────────────────────────────┐
-│ 📊 Full Orderbook                      │
-│ Price │ Amount │ Total │ Trust │ Time  │
-│ 45.2k │ 0.5   │ 22.6k │ ⭐⭐⭐⭐⭐│ 2min │
-│ 45.1k │ 1.2   │ 54.1k │ ⭐⭐⭐⭐ │ 5min │
-└─────────────────────────────────────────┘`
+│ 📊 Full Orderbook                      
+│ Price │ Amount │ Total │ Trust │ Time  
+│ 45.2k │ 0.5   │ 22.6k │ ⭐⭐⭐⭐⭐│ 2min 
+│ 45.1k │ 1.2   │ 54.1k │ ⭐⭐⭐⭐ │ 5min 
+└─────────────────────────────────────────┘`,
+        media: [
+          {
+            src: '/case-studie/bisq/ui.png',
+            alt: 'Bisq buy & sell orderbook prototype UI',
+            caption: 'Prototype of the simplified orderbook with protocols and offers list',
+            span: 3
+          }
+        ]
       },
       {
         title: 'Trust-Building Interface',
@@ -413,21 +565,21 @@ LEVEL 2: Advanced Trading Details
         solution: 'Visual reputation system with clear trust indicators',
         diagram: `🔐 TRUST INDICATOR SYSTEM
 ┌─────────────────────────────────────────┐
-│ 👤 Trader Profile: CryptoVeteran       │
-│ ⭐ Reputation: 4.8/5 (127 trades)      │
-│ 🏆 Badges: Verified, Fast Trader       │
-│ 📍 Location: 🇺🇸 (Disclosed)            │
-│ 💬 Response Time: <5 minutes           │
-│ 🔒 Escrow: Multi-sig Protected         │
+│ 👤 Trader Profile: CryptoVeteran       
+│ ⭐ Reputation: 4.8/5 (127 trades)      
+│ 🏆 Badges: Verified, Fast Trader       
+│ 📍 Location: 🇺🇸 (Disclosed)            
+│ 💬 Response Time: <5 minutes           
+│ 🔒 Escrow: Multi-sig Protected         
 └─────────────────────────────────────────┘
                     ↓ TRUST BUILDING
                     
 💬 COMMUNITY VALIDATION
 ┌─────────────────────────────────────────┐
-│ Recent Feedback (Last 30 days)          │
-│ ✅ "Fast settlement, great experience"  │
-│ ✅ "Reliable counterparty"              │
-│ ✅ "Smooth trade process"               │
+│ Recent Feedback (Last 30 days)          
+│ ✅ "Fast settlement, great experience"  
+│ ✅ "Reliable counterparty"              
+│ ✅ "Smooth trade process"               
 └─────────────────────────────────────────┘`
       },
       {
@@ -436,24 +588,24 @@ LEVEL 2: Advanced Trading Details
         solution: 'Currency selector with smart defaults and progressive complexity',
         diagram: `🌍 CURRENCY SELECTION FLOW
 ┌─────────────────────────────────────────┐
-│ 🎯 Popular Pairs (Quick Access)        │
-│ BTC/USD  BTC/EUR  BTC/GBP              │
-│                                         │
-│ 🔍 Search Other Currencies             │
-│ [Type to search...]                    │
-│                                         │
-│ 📊 All Available Pairs                 │
-│ (Advanced users only)                  │
+│ 🎯 Popular Pairs (Quick Access)        
+│ BTC/USD  BTC/EUR  BTC/GBP              
+│                                         
+│ 🔍 Search Other Currencies             
+│ [Type to search...]                    
+│                                         
+│ 📊 All Available Pairs                 
+│ (Advanced users only)                  
 └─────────────────────────────────────────┘
                     ↓ SELECTION
                     
 💰 TRADING INTERFACE
 ┌─────────────────────────────────────────┐
-│ 🎯 BTC/USD Trade                       │
-│ 💱 Amount: [0.01] BTC                  │
-│ 💰 Total: $452.00                      │
-│ ⚡ Fee: $0.45 (0.1%)                   │
-│ 🚀 Confirm Trade                       │
+│ 🎯 BTC/USD Trade                       
+│ 💱 Amount: [0.01] BTC                  
+│ 💰 Total: $452.00                      
+│ ⚡ Fee: $0.45 (0.1%)                   
+│ 🚀 Confirm Trade                       
 └─────────────────────────────────────────┘`
       }
     ],
@@ -480,15 +632,15 @@ Complexity Reduction: 50% fewer steps for new users`,
 
 DECENTRALIZED ARCHITECTURE
 ┌─────────────────────────────────────┐
-│ 🔗 P2P Network                      │
-│ ├── Tor network integration        │
-│ ├── Distributed orderbook          │
-│ └── No central servers             │
-│                                     │
-│ 🔐 Security & Trust                │
-│ ├── Multi-signature escrow         │
-│ ├── Reputation system              │
-│ └── Community validation           │
+│ 🔗 P2P Network                      
+│ ├── Tor network integration        
+│ ├── Distributed orderbook          
+│ └── No central servers             
+│                                     
+│ 🔐 Security & Trust                
+│ ├── Multi-signature escrow         
+│ ├── Reputation system              
+│ └── Community validation           
 └─────────────────────────────────────┘
 
 FRONTEND STACK  
@@ -510,6 +662,7 @@ FRONTEND STACK
     subtitle: 'Making machine learning accessible',
     year: '2020',
     client: 'Robovision',
+    logo: '/logos/robologo.png',
     role: 'UX Lead',
     duration: '6 months',
     team: ['Remote Designers', 'Data Scientists', 'ML Engineers', 'Marketing'],
@@ -560,22 +713,30 @@ FRONTEND STACK
         solution: 'Smart annotation tool with AI-powered suggestions and progressive disclosure',
         diagram: `BEFORE: Manual Technical Process
 ┌─────────────────────────────────────────┐
-│ Step 1: Load training data              │
-│ Step 2: Define bounding boxes manually  │
-│ Step 3: Set confidence thresholds       │
-│ Step 4: Adjust hyperparameters         │
-│ Step 5: Monitor F1 scores               │
-│ Step 6: Validate with test sets        │
+│ Step 1: Load training data              
+│ Step 2: Define bounding boxes manually  
+│ Step 3: Set confidence thresholds       
+│ Step 4: Adjust hyperparameters         
+│ Step 5: Monitor F1 scores               
+│ Step 6: Validate with test sets        
 └─────────────────────────────────────────┘
 
 AFTER: AI-Assisted Workflow
 ┌─────────────────────────────────────────┐
-│ 🎯 Point & Click Object Selection      │
-│ 🤖 AI Suggests Similar Objects         │
-│ ✅ Operator Confirms/Corrects          │
-│ 📊 Visual Training Progress            │
-│ 🚀 One-Click Deployment               │
-└─────────────────────────────────────────┘`
+│ 🎯 Point & Click Object Selection      
+│ 🤖 AI Suggests Similar Objects         
+│ ✅ Operator Confirms/Corrects          
+│ 📊 Visual Training Progress            
+│ 🚀 One-Click Deployment               
+└─────────────────────────────────────────┘`,
+        media: [
+          {
+            src: '/case-studie/robovision/blakcircle.png',
+            alt: 'Robovision labeler identifying blue circles on production edge',
+            caption: 'AI-assisted labeling: defect circle classes in the Robovision tool',
+            span: 3
+          }
+        ]
       },
       {
         title: 'Visual Performance Communication',
@@ -583,21 +744,21 @@ AFTER: AI-Assisted Workflow
         solution: 'Business-relevant dashboards with visual indicators and plain language',
         diagram: `BEFORE: Technical Metrics
 ┌─────────────────────────────────────────┐
-│ F1 Score: 0.94                         │
-│ Precision: 0.97                        │
-│ Recall: 0.91                           │
-│ mAP@0.5: 0.89                          │
-│ Training Loss: 0.0034                  │
-│ Validation Accuracy: 92.4%             │
+│ F1 Score: 0.94                         
+│ Precision: 0.97                        
+│ Recall: 0.91                           
+│ mAP@0.5: 0.89                          
+│ Training Loss: 0.0034                  
+│ Validation Accuracy: 92.4%             
 └─────────────────────────────────────────┘
 
 AFTER: Operator-Friendly Display
 ┌─────────────────────────────────────────┐
-│ 🎯 Quality Detection: 94% Accurate     │
-│ 📈 Model Performance: Excellent        │
-│ 🟢 Status: Ready for Production        │
-│ ⏱️ Processing: 2.3 items per second    │
-│ 🔄 Last Updated: 15 minutes ago        │
+│ 🎯 Quality Detection: 94% Accurate     
+│ 📈 Model Performance: Excellent        
+│ 🟢 Status: Ready for Production        
+│ ⏱️ Processing: 2.3 items per second    
+│ 🔄 Last Updated: 15 minutes ago        
 └─────────────────────────────────────────┘`
       },
       {
@@ -606,47 +767,56 @@ AFTER: Operator-Friendly Display
         solution: 'AI Store with pre-built solutions and customizable templates',
         diagram: `🏪 AI MARKETPLACE CONCEPT
 ┌─────────────────────────────────────────┐
-│ 🌹 Agriculture Templates               │
-│ ├── Rose Cutting Detection             │
-│ ├── Crop Quality Assessment            │
-│ └── Harvest Timing Optimization        │
-│                                         │
-│ 🔧 Manufacturing Templates             │
-│ ├── Defect Detection                   │
-│ ├── Assembly Line QC                   │
-│ └── Part Classification                 │
-│                                         │
-│ 📊 Custom Solutions                    │
-│ ├── Template Customization             │
-│ ├── Industry-Specific Workflows        │
-│ └── Deployment Automation              │
+│ 🌹 Agriculture Templates               
+│ ├── Rose Cutting Detection             
+│ ├── Crop Quality Assessment            
+│ └── Harvest Timing Optimization       
+│                                         
+│ 🔧 Manufacturing Templates             
+│ ├── Defect Detection                   
+│ ├── Assembly Line QC                   
+│ └── Part Classification                 
+│                                         
+│ 📊 Custom Solutions                    
+│ ├── Template Customization             
+│ ├── Industry-Specific Workflows        
+│ └── Deployment Automation              
 └─────────────────────────────────────────┘`
+      ,
+        media: [
+          {
+            src: '/case-studie/robovision/promo.png',
+            alt: 'Automated computer vision without coding promo',
+            caption: 'Operator-friendly positioning and value props for the platform',
+            span: 3
+          }
+        ]
       }
     ],
     implementationResults: `📊 PLATFORM ADOPTION METRICS
 
 USER ONBOARDING
 ┌─────────────────────────────────────┐
-│ 🚀 Onboarding Speed                │
-│ ▓▓▓▓▓▓▓▓▓░ 85% faster              │
-│                                     │
-│ 📚 Training Time                   │
-│ ▓▓▓▓░░░░░░ 60% reduction           │
-│                                     │
-│ 😊 User Satisfaction               │
-│ ▓▓▓▓▓▓▓▓▓▓ 100% improvement        │
+│ 🚀 Onboarding Speed                
+│ ▓▓▓▓▓▓▓▓▓░ 85% faster              
+│                                     
+│ 📚 Training Time                   
+│ ▓▓▓▓░░░░░░ 60% reduction           
+│                                     
+│ 😊 User Satisfaction               
+│ ▓▓▓▓▓▓▓▓▓▓ 100% improvement        
 └─────────────────────────────────────┘
 
 BUSINESS IMPACT
 ┌─────────────────────────────────────┐
-│ 🏭 Industry Coverage               │
-│ Manufacturing, Agriculture, QC      │
-│                                     │
-│ ⚡ Implementation Time             │
-│ From weeks to hours setup          │
-│                                     │
-│ 🔧 Self-Service Capability         │
-│ Independent model maintenance       │
+│ 🏭 Industry Coverage               
+│ Manufacturing, Agriculture, QC      
+│                                     
+│ ⚡ Implementation Time             
+│ From weeks to hours setup          
+│                                     
+│ 🔧 Self-Service Capability         
+│ Independent model maintenance       
 └─────────────────────────────────────┘`,
     testimonials: [
       'The redesigned interface transformed our production line. What used to take days of training now takes hours, and our operators can maintain AI models independently. - Production Manager, Manufacturing Client',
@@ -656,15 +826,15 @@ BUSINESS IMPACT
 
 COMPUTER VISION ENGINE
 ┌─────────────────────────────────────┐
-│ 🤖 Machine Learning                │
-│ ├── Object detection models        │
-│ ├── Classification algorithms      │
-│ └── Custom training pipelines      │
-│                                     │
-│ 📹 Vision Processing               │
-│ ├── Real-time image analysis       │
-│ ├── Video stream handling          │
-│ └── Multi-camera integration       │
+│ 🤖 Machine Learning                
+│ ├── Object detection models        
+│ ├── Classification algorithms      
+│ └── Custom training pipelines      
+│                                     
+│ 📹 Vision Processing               
+│ ├── Real-time image analysis       
+│ ├── Video stream handling          
+│ └── Multi-camera integration       
 └─────────────────────────────────────┘
 
 USER EXPERIENCE STACK

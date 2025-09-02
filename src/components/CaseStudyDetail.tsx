@@ -79,57 +79,124 @@ export const CaseStudyDetail = ({ caseStudy, onBack }: CaseStudyDetailProps) => 
         </div>
 
         {/* Business Context - Full Width Spanning 2 Columns */}
-        {caseStudy.businessContext && (
+        {(caseStudy.businessContext || (caseStudy.businessContextImages && caseStudy.businessContextImages.length > 0)) && (
           <div className="mt-12">
             <h3 className="text-xl font-bold mb-6">Business Context</h3>
-            <div className="flex items-start gap-4">
-              {/* Company/Client Logo */}
-              <div className="flex-shrink-0">
-                {caseStudy.logo ? (
-                  <div className="w-20 h-20 rounded-lg bg-white border border-gray-200 flex items-center justify-center">
-                    <Image src={caseStudy.logo} alt={`${caseStudy.client} logo`} width={80} height={80} className="object-contain" />
-                  </div>
-                ) : (
-                  <div className="w-20 h-20 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
-                    <span className="text-gray-400 text-xs text-center">Client Logo</span>
-                  </div>
-                )}
+            {(caseStudy.businessContext) && (
+              <div className="flex items-start gap-4">
+                {/* Company/Client Logo */}
+                <div className="flex-shrink-0">
+                  {caseStudy.logo ? (
+                    <div className="w-20 h-20 rounded-lg bg-white border border-gray-200 flex items-center justify-center">
+                      <Image src={caseStudy.logo} alt={`${caseStudy.client} logo`} width={80} height={80} className="object-contain" />
+                    </div>
+                  ) : (
+                    <div className="w-20 h-20 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
+                      <span className="text-gray-400 text-xs text-center">Client Logo</span>
+                    </div>
+                  )}
+                </div>
+                {/* Business Context Text */}
+                <div className="flex-1">
+                  <p className="text-gray-700 leading-relaxed">{caseStudy.businessContext}</p>
+                </div>
               </div>
-              {/* Business Context Text */}
-              <div className="flex-1">
-                <p className="text-gray-700 leading-relaxed">{caseStudy.businessContext}</p>
+            )}
+            {caseStudy.businessContextImages && caseStudy.businessContextImages.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
+                {caseStudy.businessContextImages.map((img, idx) => (
+                  <figure key={idx} className={`bg-white border rounded-lg overflow-hidden shadow-sm ${img.span === 2 ? 'sm:col-span-2' : ''} ${img.span === 3 ? 'sm:col-span-2 lg:col-span-3' : ''}`}>
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      width={img.width || 1600}
+                      height={img.height || 900}
+                      className="w-full h-auto object-cover"
+                    />
+                    {img.caption && (
+                      <figcaption className="text-sm text-gray-600 px-4 py-3 border-t bg-gray-50">
+                        {img.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                ))}
               </div>
-            </div>
+            )}
           </div>
         )}
 
-        {/* Problem Breakdown with ASCII */}
-        {caseStudy.problemBreakdown && (
+        {/* Problem Analysis */}
+        {(caseStudy.problemBreakdown || (caseStudy.problemImages && caseStudy.problemImages.length > 0)) && (
           <div className="mt-12">
             <h3 className="text-xl font-bold mb-6">Problem Analysis</h3>
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <pre className="text-sm text-gray-800 overflow-x-auto whitespace-pre-wrap font-mono">
+            {caseStudy.problemBreakdown && (
+              <div className="bg-gray-50 p-6 rounded-lg mb-6">
+                <pre className="text-sm text-gray-800 overflow-x-auto whitespace-pre-wrap font-mono">
 {caseStudy.problemBreakdown}
-              </pre>
-            </div>
+                </pre>
+              </div>
+            )}
+            {caseStudy.problemImages && caseStudy.problemImages.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {caseStudy.problemImages.map((img, idx) => (
+                  <figure key={idx} className={`bg-white border rounded-lg overflow-hidden shadow-sm ${img.span === 2 ? 'sm:col-span-2' : ''}`}>
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      width={img.width || 1600}
+                      height={img.height || 900}
+                      className="w-full h-auto object-cover"
+                    />
+                    {img.caption && (
+                      <figcaption className="text-sm text-gray-600 px-4 py-3 border-t bg-gray-50">
+                        {img.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>
     </div>
 
     {/* Research & Discovery */}
-    {caseStudy.researchMethods && (
+    {(caseStudy.researchMethods || (caseStudy.researchImages && caseStudy.researchImages.length > 0)) && (
       <div className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-2xl font-bold mb-8">Research & Discovery</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {caseStudy.researchMethods.map((method, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg border">
-                <p className="text-sm text-gray-700">{method}</p>
-              </div>
-            ))}
-          </div>
+          {caseStudy.researchMethods && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              {caseStudy.researchMethods.map((method, index) => (
+                <div key={index} className="bg-white p-4 rounded-lg border">
+                  <p className="text-sm text-gray-700">{method}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {caseStudy.researchImages && caseStudy.researchImages.length > 0 && (
+            <div className="space-y-6">
+              {caseStudy.researchImages.map((img, idx) => (
+                <figure key={idx} className="bg-white border rounded-lg overflow-hidden shadow-sm">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={img.width || 1600}
+                    height={img.height || 900}
+                    className="w-full h-auto object-cover"
+                  />
+                  {img.caption && (
+                    <figcaption className="text-sm text-gray-600 px-4 py-3 border-t bg-gray-50">
+                      {img.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          )}
 
           {caseStudy.keyInsight && (
             <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
@@ -140,6 +207,8 @@ export const CaseStudyDetail = ({ caseStudy, onBack }: CaseStudyDetailProps) => 
         </div>
       </div>
     )}
+
+    {/* Media Gallery removed per request */}
 
     {/* Design Solutions */}
     {caseStudy.solutions && (
@@ -171,10 +240,60 @@ export const CaseStudyDetail = ({ caseStudy, onBack }: CaseStudyDetailProps) => 
                       </pre>
                     </div>
                   )}
+                  {solution.media && solution.media.length > 0 && (
+                    <div className="lg:col-span-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {solution.media.map((m, i) => (
+                          <figure key={i} className={`bg-white border rounded-lg overflow-hidden shadow-sm ${m.span === 2 ? 'sm:col-span-2' : ''} ${m.span === 3 ? 'lg:col-span-3' : ''}`}>
+                            <Image
+                              src={m.src}
+                              alt={m.alt}
+                              width={m.width || 1600}
+                              height={m.height || 900}
+                              className="w-full h-auto object-cover"
+                            />
+                            {m.caption && (
+                              <figcaption className="text-sm text-gray-600 px-4 py-3 border-t bg-gray-50">
+                                {m.caption}
+                              </figcaption>
+                            )}
+                          </figure>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </div>
+    )}
+
+    {/* Fullscreen Gallery */}
+    {caseStudy.gallery && caseStudy.gallery.length > 0 && (
+      <div className="py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-2xl font-bold mb-8">Gallery</h2>
+        </div>
+        <div className="mx-[calc(50%-50vw)] w-screen space-y-6">
+          {caseStudy.gallery.map((item, idx) => (
+            <figure key={idx} className="bg-black">
+              <Image
+                src={item.src}
+                alt={item.alt}
+                width={item.width || 2400}
+                height={item.height || 1200}
+                className="w-full h-auto object-cover"
+                priority={idx === 0}
+              />
+              {item.caption && (
+                <figcaption className="text-sm text-gray-300 px-6 py-3 border-t border-gray-800 bg-black/60">
+                  <div className="max-w-6xl mx-auto">{item.caption}</div>
+                </figcaption>
+              )}
+            </figure>
+          ))}
         </div>
       </div>
     )}

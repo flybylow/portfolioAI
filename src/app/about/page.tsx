@@ -1,7 +1,11 @@
+"use client";
 import { Footer } from '@/components/Footer';
 import { MainNavigation } from '@/components/MainNavigation';
+import Image from 'next/image';
+import { useState } from 'react';
 
 export default function AboutPage() {
+  const [aiOpen, setAiOpen] = useState(false);
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -30,42 +34,42 @@ export default function AboutPage() {
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-16">
-            <div className="bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-500 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+            <div className="group bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-500 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-2xl text-white mb-6">
                 📈
               </div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900">User Adoption & Trust</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 transition-all duration-300 max-h-0 opacity-0 overflow-hidden group-hover:max-h-40 group-hover:opacity-100">
                 Transform complex AI and blockchain concepts into intuitive experiences that users can confidently navigate, reducing onboarding time and increasing platform engagement.
               </p>
             </div>
             
-            <div className="bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-500 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+            <div className="group bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-500 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-2xl text-white mb-6">
                 ⚡
               </div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900">Faster Time-to-Market</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 transition-all duration-300 max-h-0 opacity-0 overflow-hidden group-hover:max-h-40 group-hover:opacity-100">
                 Proven design frameworks specifically for emerging technology that accelerate development cycles while maintaining quality and user focus.
               </p>
             </div>
             
-            <div className="bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-500 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+            <div className="group bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-500 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-2xl text-white mb-6">
                 🎯
               </div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900">Reduced Support Burden</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 transition-all duration-300 max-h-0 opacity-0 overflow-hidden group-hover:max-h-40 group-hover:opacity-100">
                 Interfaces designed to prevent user errors and confusion, dramatically reducing support tickets and allowing your team to focus on innovation.
               </p>
             </div>
             
-            <div className="bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-500 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+            <div className="group bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-500 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-2xl text-white mb-6">
                 💼
               </div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900">Stakeholder Confidence</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 transition-all duration-300 max-h-0 opacity-0 overflow-hidden group-hover:max-h-40 group-hover:opacity-100">
                 Clear design documentation and user research that helps secure funding, align technical teams, and demonstrate ROI to leadership.
               </p>
             </div>
@@ -73,7 +77,54 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Process Section (moved above Services) */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-5 text-gray-900">
+            How We'll Work Together
+          </h2>
+          <p className="text-xl text-center text-gray-600 max-w-4xl mx-auto mb-16">
+            I understand that AI and blockchain projects have unique constraints and stakeholder requirements. My process adapts to your technical environment while maintaining focus on user outcomes.
+          </p>
+          <div className="max-w-4xl mx-auto mb-10">
+            <Image src="/home/workshop.png" alt="Co-creation workshop with operators, engineers and designers" width={1600} height={900} className="w-full h-auto rounded-xl border border-gray-200" />
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">
+                1
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Discovery & Strategy</h3>
+              <div className="text-gray-600">
+                <p>Deep dive into your technology stack, user types, and business constraints. Stakeholder interviews across technical and business teams.</p>
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">
+                2
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Design & Validation</h3>
+              <div className="text-gray-600">
+                <p>Rapid prototyping within technical limitations. User testing frameworks adapted for complex technical products.</p>
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">
+                3
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Implementation & Measurement</h3>
+              <div className="text-gray-600">
+                <p>Close collaboration with development teams. Design documentation that bridges UX vision and technical execution.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section (moved below Process) */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-5 text-gray-900">
@@ -85,11 +136,16 @@ export default function AboutPage() {
           
           <div className="space-y-12">
             <div className="bg-white rounded-3xl overflow-hidden shadow-xl">
-              <div className="bg-gradient-to-r from-green-500 to-green-600 text-white p-8">
+              <div
+                className="bg-gradient-to-r from-green-500 to-green-600 text-white p-8 cursor-pointer select-none"
+                onClick={() => setAiOpen((v) => !v)}
+                role="button"
+                aria-expanded={aiOpen}
+              >
                 <h3 className="text-2xl font-semibold mb-2">AI/ML Interface Design</h3>
                 <p>Making artificial intelligence transparent and trustworthy</p>
               </div>
-              <div className="p-10">
+              <div className={`p-10 transition-all duration-300 ease-in-out ${aiOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                 <ul className="space-y-5">
                   <li className="flex items-start">
                     <span className="text-green-500 font-bold mr-4">→</span>
@@ -198,50 +254,6 @@ export default function AboutPage() {
                     </div>
                   </li>
                 </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-5 text-gray-900">
-            How We'll Work Together
-          </h2>
-          <p className="text-xl text-center text-gray-600 max-w-4xl mx-auto mb-16">
-            I understand that AI and blockchain projects have unique constraints and stakeholder requirements. My process adapts to your technical environment while maintaining focus on user outcomes.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">
-                1
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Discovery & Strategy</h3>
-              <div className="text-gray-600">
-                <p>Deep dive into your technology stack, user types, and business constraints. Stakeholder interviews across technical and business teams.</p>
-              </div>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">
-                2
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Design & Validation</h3>
-              <div className="text-gray-600">
-                <p>Rapid prototyping within technical limitations. User testing frameworks adapted for complex technical products.</p>
-              </div>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">
-                3
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Implementation & Measurement</h3>
-              <div className="text-gray-600">
-                <p>Close collaboration with development teams. Design documentation that bridges UX vision and technical execution.</p>
               </div>
             </div>
           </div>

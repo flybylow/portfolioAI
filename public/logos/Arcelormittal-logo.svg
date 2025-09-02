@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" width="320" height="90" role="img" aria-label="ArcelorMittal logo">
+  <defs>
+    <linearGradient id="arcGlow" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#F05A28" stop-opacity="1"/>
+      <stop offset="1" stop-color="#F05A28" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="none"/>
+  <!-- Stylized arc (brand accent) -->
+  <path d="M20 28 C 90 0, 190 0, 300 28" fill="none" stroke="url(#arcGlow)" stroke-width="10" stroke-linecap="round"/>
+  <!-- Wordmark (simple, accessible placeholder) -->
+  <g transform="translate(18,66)">
+    <text font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="26" fill="#1F2937" letter-spacing="0.4">
+      ArcelorMittal
+    </text>
+  </g>
+</svg>
+
