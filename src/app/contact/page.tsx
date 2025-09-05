@@ -43,7 +43,7 @@ export default function ContactPage({ searchParams }: { searchParams?: { sent?: 
                 </div> <div>
                   <h3 className="font-semibold text-lg mb-2">Email</h3>
                   <a href="mailto:warddem@gmail.com" className="text-gray-600 hover:text-black transition-colors">
-                  warddem@gmail.com
+                  warddem AT gmail.com
                   </a>
                 </div>
                 <div>
@@ -64,58 +64,8 @@ export default function ContactPage({ searchParams }: { searchParams?: { sent?: 
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div>
-              <h2 className="text-3xl font-bold mb-8">Send a Message</h2>
-              <form className="space-y-4" name="contact" method="POST" data-netlify="true" action="/contact?sent=1">
-                <input type="hidden" name="form-name" value="contact" />
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-                    placeholder="Tell me about your project or question..."
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-black text-white py-3 px-6 rounded-md hover:bg-gray-800 transition-colors font-medium"
-                >
-                  Send Message
-                </button>
-              </form>
-            </div>
+            {/* Contact Form (temporarily hidden) */}
+            <div></div>
           </div>
         </div>
       </div>
