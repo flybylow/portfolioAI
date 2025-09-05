@@ -45,7 +45,7 @@ export default function AboutPage() {
                 alt="Ward Demeyer speaking during a workshop"
                 width={1024}
                 height={1536}
-                className="w-full h-auto rounded-xl border border-gray-200 shadow-sm object-cover"
+                className="w-[70%] h-auto rounded-xl border border-gray-200 shadow-sm object-cover mx-auto"
                 priority
               />
             </div>
@@ -80,60 +80,60 @@ export default function AboutPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-16">
             <div
-              className="bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-500 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-pointer"
+              className="bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-300 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-pointer"
               onClick={() => setBenefit1Open((v) => !v)}
               role="button"
               aria-expanded={benefit1Open}
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-2xl text-white mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-300 to-blue-300 rounded-full flex items-center justify-center text-2xl text-black mb-6">
                 📈
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">User Adoption & Trust</h3>
+              <h3 className="text-xl font-semibold mb-4 italic text-blue-300">User Adoption & Trust</h3>
               <p className={`text-gray-600 transition-all duration-300 ${benefit1Open ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}> 
                 Transform complex AI and blockchain concepts into intuitive experiences that users can confidently navigate, reducing onboarding time and increasing platform engagement.
               </p>
             </div>
             
             <div
-              className="bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-500 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-pointer"
+              className="bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-300 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-pointer"
               onClick={() => setBenefit2Open((v) => !v)}
               role="button"
               aria-expanded={benefit2Open}
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-2xl text-white mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-300 to-blue-300 rounded-full flex items-center justify-center text-2xl text-black mb-6">
                 ⚡
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Faster Time-to-Market</h3>
+              <h3 className="text-xl font-semibold mb-4 italic text-blue-300">Faster Time-to-Market</h3>
               <p className={`text-gray-600 transition-all duration-300 ${benefit2Open ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                 Proven design frameworks specifically for emerging technology that accelerate development cycles while maintaining quality and user focus.
               </p>
             </div>
             
             <div
-              className="bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-500 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-pointer"
+              className="bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-300 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-pointer"
               onClick={() => setBenefit3Open((v) => !v)}
               role="button"
               aria-expanded={benefit3Open}
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-2xl text-white mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-300 to-blue-300 rounded-full flex items-center justify-center text-2xl text-black mb-6">
                 🎯
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Reduced Support Burden</h3>
+              <h3 className="text-xl font-semibold mb-4 italic text-blue-300">Reduced Support Burden</h3>
               <p className={`text-gray-600 transition-all duration-300 ${benefit3Open ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                 Interfaces designed to prevent user errors and confusion, dramatically reducing support tickets and allowing your team to focus on innovation.
               </p>
             </div>
             
             <div
-              className="bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-500 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-pointer"
+              className="bg-white p-10 rounded-2xl shadow-lg border-l-4 border-blue-300 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-pointer"
               onClick={() => setBenefit4Open((v) => !v)}
               role="button"
               aria-expanded={benefit4Open}
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-2xl text-white mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-300 to-blue-300 rounded-full flex items-center justify-center text-2xl text-black mb-6">
                 💼
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Stakeholder Confidence</h3>
+              <h3 className="text-xl font-semibold mb-4 italic text-blue-300">Stakeholder Confidence</h3>
               <p className={`text-gray-600 transition-all duration-300 ${benefit4Open ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                 Clear design documentation and user research that helps secure funding, align technical teams, and demonstrate ROI to leadership.
               </p>
@@ -154,30 +154,30 @@ export default function AboutPage() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16">
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-300 to-blue-300 text-black rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">
                 1
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Discovery & Strategy</h3>
+              <h3 className="text-xl font-semibold mb-4 italic text-blue-300">Discovery & Strategy</h3>
               <div className="text-gray-600">
                 <p>Deep dive into your technology stack, user types, and business constraints. Stakeholder interviews across technical and business teams.</p>
               </div>
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-300 to-blue-300 text-black rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">
                 2
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Design & Validation</h3>
+              <h3 className="text-xl font-semibold mb-4 italic text-blue-300">Design & Validation</h3>
               <div className="text-gray-600">
                 <p>Rapid prototyping within technical limitations. User testing frameworks adapted for complex technical products.</p>
               </div>
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-300 to-blue-300 text-black rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">
                 3
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Implementation & Measurement</h3>
+              <h3 className="text-xl font-semibold mb-4 italic text-blue-300">Implementation & Measurement</h3>
               <div className="text-gray-600">
                 <p>Close collaboration with development teams. Design documentation that bridges UX vision and technical execution.</p>
               </div>
