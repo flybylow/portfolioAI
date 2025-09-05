@@ -1,7 +1,8 @@
 import { Footer } from '@/components/Footer';
 import { MainNavigation } from '@/components/MainNavigation';
 
-export default function ContactPage() {
+export default function ContactPage({ searchParams }: { searchParams?: { sent?: string } }) {
+  const sent = searchParams?.sent === '1';
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -19,6 +20,14 @@ export default function ContactPage() {
         </div>
       </div>
 
+      {sent && (
+        <div className="max-w-4xl mx-auto px-6 -mt-6">
+          <div className="rounded-md bg-green-50 text-green-800 p-4 border border-green-200">
+            Thanks! I’ll get back to you soon.
+          </div>
+        </div>
+      )}
+
       {/* Contact Information */}
       <div className="py-16">
         <div className="max-w-4xl mx-auto px-6">
@@ -27,10 +36,14 @@ export default function ContactPage() {
             <div>
               <h2 className="text-3xl font-bold mb-8">Let's Connect</h2>
               <div className="space-y-6">
-                <div>
+              <div>
+                  <h3 className="font-semibold text-lg mb-2">Ward De Muynck</h3>
+                 
+                  
+                </div> <div>
                   <h3 className="font-semibold text-lg mb-2">Email</h3>
-                  <a href="mailto:ward@example.com" className="text-gray-600 hover:text-black transition-colors">
-                    ward@example.com
+                  <a href="mailto:warddem@gmail.com" className="text-gray-600 hover:text-black transition-colors">
+                  warddem@gmail.com
                   </a>
                 </div>
                 <div>
@@ -46,11 +59,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-2">Location</h3>
-                  <p className="text-gray-600">Belgium</p>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Experience</h3>
-                  <p className="text-gray-600">15+ years in UX design and leadership</p>
+                  <p className="text-gray-600">Bruges, Belgium</p>
                 </div>
               </div>
             </div>
@@ -58,7 +67,8 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div>
               <h2 className="text-3xl font-bold mb-8">Send a Message</h2>
-              <form className="space-y-4">
+              <form className="space-y-4" name="contact" method="POST" data-netlify="true" action="/contact?sent=1">
+                <input type="hidden" name="form-name" value="contact" />
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Name
@@ -67,6 +77,7 @@ export default function ContactPage() {
                     type="text"
                     id="name"
                     name="name"
+                    required
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                     placeholder="Your name"
                   />
@@ -79,6 +90,7 @@ export default function ContactPage() {
                     type="email"
                     id="email"
                     name="email"
+                    required
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                     placeholder="your.email@example.com"
                   />
@@ -91,6 +103,7 @@ export default function ContactPage() {
                     id="message"
                     name="message"
                     rows={4}
+                    required
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                     placeholder="Tell me about your project or question..."
                   ></textarea>
