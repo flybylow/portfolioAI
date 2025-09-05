@@ -152,10 +152,6 @@ export default function AboutPage() {
             I understand that every project has unique constraints and requirements. 
             My process adapts to your environment while maintaining focus on user outcomes.
           </p>
-          <div className="max-w-4xl mx-auto mb-10">
-            <Image src="/home/workshop.png" alt="Co-creation workshop with operators, engineers and designers" width={1600} height={900} className="w-full h-auto rounded-xl border border-gray-200" />
-          </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16">
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">
@@ -186,6 +182,10 @@ export default function AboutPage() {
                 <p>Close collaboration with development teams. Design documentation that bridges UX vision and technical execution.</p>
               </div>
             </div>
+          </div>
+          
+          <div className="max-w-4xl mx-auto mt-10">
+            <Image src="/home/workshop.png" alt="Co-creation workshop with operators, engineers and designers" width={1600} height={900} className="w-full h-auto rounded-xl border border-gray-200" />
           </div>
         </div>
       </section>
