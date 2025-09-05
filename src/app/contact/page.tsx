@@ -1,5 +1,6 @@
 import { Footer } from '@/components/Footer';
 import { MainNavigation } from '@/components/MainNavigation';
+import { EmailReveal } from '@/components/EmailReveal';
 
 export default function ContactPage({ searchParams }: { searchParams?: { sent?: string } }) {
   const sent = searchParams?.sent === '1';
@@ -42,9 +43,7 @@ export default function ContactPage({ searchParams }: { searchParams?: { sent?: 
                   
                 </div> <div>
                   <h3 className="font-semibold text-lg mb-2">Email</h3>
-                  <a href="mailto:warddem@gmail.com" className="text-gray-600 hover:text-black transition-colors">
-                  warddem AT gmail.com
-                  </a>
+                  <EmailReveal />
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-2">LinkedIn</h3>
