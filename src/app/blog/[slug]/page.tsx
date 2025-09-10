@@ -3,6 +3,7 @@ import { MainNavigation } from '@/components/MainNavigation';
 import { Footer } from '@/components/Footer';
 import { blogPosts } from '@/data/blog';
 import { formatDateYYYYMMDD } from '@/lib/utils';
+import { marked } from 'marked';
 
 interface Params {
   params: { slug: string };
@@ -24,11 +25,10 @@ export default function BlogPostPage({ params }: Params) {
         <div className="max-w-3xl mx-auto">
           <div className="text-sm text-gray-500 mb-3">{formatDateYYYYMMDD(post.date)}</div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">{post.title}</h1>
-          <div className="prose prose-gray max-w-none">
-            {post.content.split('\n').map((line, idx) => (
-              <p key={idx} className="mb-4 whitespace-pre-wrap">{line}</p>
-            ))}
-          </div>
+          <div
+            className="prose prose-gray max-w-none"
+            dangerouslySetInnerHTML={{ __html: marked.parse(post.content) as string }}
+          />
         </div>
       </article>
 
