@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { MainNavigation } from '@/components/MainNavigation';
 import { Footer } from '@/components/Footer';
 import { blogPosts } from '@/data/blog';
+import { formatDateYYYYMMDD } from '@/lib/utils';
 
 export default function BlogIndexPage() {
   return (
@@ -16,7 +17,7 @@ export default function BlogIndexPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {blogPosts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="block rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow">
-                <div className="text-sm text-gray-500 mb-2">{new Date(post.date).toLocaleDateString()}</div>
+                <div className="text-sm text-gray-500 mb-2">{formatDateYYYYMMDD(post.date)}</div>
                 <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
                 <p className="text-gray-600">{post.excerpt}</p>
               </Link>

@@ -5,6 +5,7 @@ import { CaseStudyCard } from './CaseStudyCard';
 import Link from 'next/link';
 import Image from 'next/image';
 import { blogPosts } from '@/data/blog';
+import { formatDateYYYYMMDD } from '@/lib/utils';
 
 interface HomePageProps {
   onCaseStudyClick: (caseStudy: CaseStudy) => void;
@@ -88,7 +89,7 @@ export const HomePage = ({ onCaseStudyClick }: HomePageProps) => (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {blogPosts.slice(0, 2).map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="block rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow">
-              <div className="text-sm text-gray-500 mb-2">{new Date(post.date).toLocaleDateString()}</div>
+              <div className="text-sm text-gray-500 mb-2">{formatDateYYYYMMDD(post.date)}</div>
               <div className="text-2xl font-semibold mb-2">{post.title}</div>
               <div className="text-gray-600">{post.excerpt}</div>
             </Link>
