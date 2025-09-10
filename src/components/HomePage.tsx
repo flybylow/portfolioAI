@@ -15,9 +15,10 @@ export const HomePage = ({ onCaseStudyClick }: HomePageProps) => (
   <div className="min-h-screen bg-white">
     {/* Hero Section */}
     <div className="py-24 px-6 relative overflow-hidden">
-      {/* Soft animated glow */}
+      {/* Soft animated glow (increased intensity) */}
       <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
-        <div className="h-64 w-64 md:h-96 md:w-96 rounded-full blur-3xl opacity-40 bg-gradient-to-tr from-blue-300 via-purple-300 to-blue-300 animate-pulse" />
+        <div className="h-96 w-96 md:h-[32rem] md:w-[32rem] rounded-full blur-3xl opacity-70 bg-gradient-to-tr from-blue-300 via-purple-300 to-blue-300 animate-pulse" />
+        <div className="absolute h-72 w-72 md:h-[28rem] md:w-[28rem] rounded-full blur-3xl opacity-50 bg-gradient-to-tr from-purple-300 via-blue-300 to-purple-300" />
       </div>
       <div className="max-w-6xl mx-auto text-center">
         <h1 className="text-5xl md:text-7xl font-bold mb-6">
