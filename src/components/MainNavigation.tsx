@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 interface MainNavigationProps {
-  currentPage?: 'work' | 'about' | 'contact';
+  currentPage?: 'work' | 'about' | 'blockchain' | 'contact' | 'blog';
 }
 
 export const MainNavigation = ({ currentPage }: MainNavigationProps) => {
@@ -32,6 +32,26 @@ export const MainNavigation = ({ currentPage }: MainNavigationProps) => {
               }`}
             >
               About
+            </Link>
+            <Link 
+              href="/blockchain-ai" 
+              className={`text-sm transition-colors ${
+                currentPage === 'blockchain' 
+                  ? 'text-black font-medium' 
+                  : 'text-gray-600 hover:text-black'
+              }`}
+            >
+              Blockchain & AI
+            </Link>
+            <Link 
+              href="/blog" 
+              className={`text-sm transition-colors ${
+                currentPage === 'blog' 
+                  ? 'text-black font-medium' 
+                  : 'text-gray-600 hover:text-black'
+              }`}
+            >
+              Blog
             </Link>
             <Link 
               href="/contact" 
