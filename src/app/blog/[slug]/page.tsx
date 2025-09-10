@@ -17,6 +17,9 @@ export default function BlogPostPage({ params }: Params) {
   const post = blogPosts.find((p) => p.slug === params.slug);
   if (!post) return notFound();
 
+  // Configure marked for soft line breaks
+  marked.setOptions({ breaks: true });
+
   return (
     <div className="min-h-screen bg-white">
       <MainNavigation currentPage={undefined} />
