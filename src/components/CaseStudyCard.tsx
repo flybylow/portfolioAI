@@ -10,9 +10,12 @@ interface CaseStudyCardProps {
 
 export const CaseStudyCard = ({ caseStudy, onClick }: CaseStudyCardProps) => (
   <div 
-    className="group cursor-pointer bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-lg"
+    className="group relative cursor-pointer rounded-2xl border border-transparent bg-white/60 backdrop-blur-md transition-all hover:shadow-lg shadow-[0_0_0_1px_rgba(147,197,253,0.4)]"
     onClick={() => onClick(caseStudy)}
   >
+    <div className="absolute inset-0 -z-10 rounded-2xl p-[1px] [mask-image:linear-gradient(white,transparent_60%)]">
+      <div className="h-full w-full rounded-2xl bg-gradient-to-r from-blue-300 to-purple-300 opacity-70" />
+    </div>
     <div className={`h-64 ${caseStudy.heroImage} flex items-center justify-center relative overflow-hidden`}>
       <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
       <div className="relative text-center text-white z-10">

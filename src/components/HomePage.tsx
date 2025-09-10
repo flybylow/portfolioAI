@@ -14,7 +14,11 @@ interface HomePageProps {
 export const HomePage = ({ onCaseStudyClick }: HomePageProps) => (
   <div className="min-h-screen bg-white">
     {/* Hero Section */}
-    <div className="py-24 px-6">
+    <div className="py-24 px-6 relative overflow-hidden">
+      {/* Soft animated glow */}
+      <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
+        <div className="h-64 w-64 md:h-96 md:w-96 rounded-full blur-3xl opacity-40 bg-gradient-to-tr from-blue-300 via-purple-300 to-blue-300 animate-pulse" />
+      </div>
       <div className="max-w-6xl mx-auto text-center">
         <h1 className="text-5xl md:text-7xl font-bold mb-6">
           Making tech <span className="italic">human</span>
@@ -28,7 +32,7 @@ export const HomePage = ({ onCaseStudyClick }: HomePageProps) => (
 
     {/* Welcome Section */}
     <div className="py-8">
-      <Link href="/about" className="block">
+      <Link href="/about" className="block group">
         <div className="max-w-3xl mx-auto px-6">
           <div className="rounded-xl border border-gray-200 p-6 md:p-8 hover:shadow-md transition-shadow bg-white">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
@@ -47,7 +51,8 @@ export const HomePage = ({ onCaseStudyClick }: HomePageProps) => (
                 <p className="text-gray-600 mb-5">
                   I'm Ward, an interaction designer helping teams make complex tech understandable and trusted.
                 </p>
-                <span className="inline-block text-blue-600 hover:text-blue-700 font-medium">
+                <span className="inline-block text-blue-600 hover:text-blue-700 font-medium relative">
+                  <span className="absolute left-0 -bottom-1 h-px w-0 bg-blue-300 transition-all duration-300 group-hover:w-full" />
                   Learn more about me →
                 </span>
               </div>
@@ -88,10 +93,15 @@ export const HomePage = ({ onCaseStudyClick }: HomePageProps) => (
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {blogPosts.slice(0, 2).map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="block rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow">
-              <div className="text-sm text-gray-500 mb-2">{formatDateYYYYMMDD(post.date)}</div>
-              <div className="text-2xl font-semibold mb-2">{post.title}</div>
-              <div className="text-gray-600">{post.excerpt}</div>
+            <Link key={post.slug} href={`/blog/${post.slug}`} className="group relative block rounded-2xl border border-transparent bg-white/60 backdrop-blur-md hover:shadow-lg transition-all shadow-[0_0_0_1px_rgba(147,197,253,0.4)]">
+              <div className="absolute inset-0 -z-10 rounded-2xl p-[1px] [mask-image:linear-gradient(white,transparent_60%)]">
+                <div className="h-full w-full rounded-2xl bg-gradient-to-r from-blue-300 to-purple-300 opacity-70" />
+              </div>
+              <div className="relative p-6">
+                <div className="text-sm text-gray-500 mb-2">{formatDateYYYYMMDD(post.date)}</div>
+                <div className="text-2xl font-semibold mb-2">{post.title}</div>
+                <div className="text-gray-600">{post.excerpt}</div>
+              </div>
             </Link>
           ))}
         </div>
