@@ -14,7 +14,7 @@ export const Portfolio = () => {
 
   // Handle URL parameters for direct case study linking
   useEffect(() => {
-    const caseStudyId = searchParams.get('case-study');
+    const caseStudyId = searchParams?.get('case-study') || null;
     if (caseStudyId) {
       const caseStudy = caseStudies.find(cs => cs.id === caseStudyId);
       if (caseStudy) {

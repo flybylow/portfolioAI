@@ -138,7 +138,7 @@ export const caseStudies: CaseStudy[] = [
             height: 931
           },
           {
-            src: '/case-studie/electrolux-after.png',
+            src: '/case-studie/electrolux/electrolux-after.png',
             alt: 'Electrolux redesigned dashboard in use at the office',
             caption: 'After: Data visualisation and oversight.',
             span: 3,
