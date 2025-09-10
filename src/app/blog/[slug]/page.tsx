@@ -17,6 +17,11 @@ export default function BlogPostPage({ params }: Params) {
   const post = blogPosts.find((p) => p.slug === params.slug);
   if (!post) return notFound();
 
+  function stripLeadingH1(markdown: string): string {
+    // Remove a single leading level-1 heading (e.g., "# Title") at the very start
+    return markdown.replace(/^#\s+[^\n\r]*(\r?\n)?/, '');
+  }
+
   // Configure marked for soft line breaks
   marked.setOptions({ breaks: true });
 
@@ -30,7 +35,7 @@ export default function BlogPostPage({ params }: Params) {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">{post.title}</h1>
           <div
             className="prose prose-gray max-w-none"
-            dangerouslySetInnerHTML={{ __html: marked.parse(post.content) as string }}
+            dangerouslySetInnerHTML={{ __html: marked.parse(stripLeadingH1(post.content)) as string }}
           />
         </div>
       </article>
